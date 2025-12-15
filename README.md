@@ -47,6 +47,7 @@ No orphaned records
 Intentional 2% null rate in driver/truck assignments (reflects reality)
 All timestamps properly sequenced
 Financial calculations verified
+
 Use Case Examples
 Business Intelligence:
 Create executive dashboards showing revenue per truck, cost per mile, driver efficiency rankings, maintenance spend by equipment age, customer concentration risk.
@@ -57,15 +58,15 @@ Build models forecasting equipment failures based on maintenance history, predic
 Operations Optimization:
 Analyze route efficiency, identify underutilized assets, optimize maintenance scheduling, calculate ideal fleet size, evaluate driver-to-truck ratios.
 
-SQL Mastery:
-Practice window functions for running totals and rankings, write complex JOINs across 6+ tables, implement CTEs for hierarchical queries, perform cohort analysis on driver retention.
-
 Sample Questions to Explore
-Which routes generate the highest profit margin after fuel costs?
-How does driver tenure correlate with fuel efficiency and on-time performance?
-What's the optimal preventive maintenance interval to minimize total cost of ownership?
-Which customers have the highest revenue-per-load and best payment terms?
-How do seasonal patterns affect equipment utilization and revenue?
-What safety incident patterns exist by driver experience level?
-Which city pairs have the most reliable on-time delivery performance?
-How does truck age impact maintenance costs and downtime?
+1. Which drivers have the highest on‑time delivery rate, and how does this correlate with their average MPG?
+2. What is the revenue per mile for each route, and which lanes generate the highest profit after fuel costs?
+3. Which trucks generate the most revenue per month, and how many miles do they run compared to the fleet average?
+4. Which trucks have the highest maintenance cost per mile, and how does downtime affect their revenue contribution?
+5. How does fuel efficiency (MPG) vary by route type, distance, and driver?
+6. Which customers generate the most revenue, and how do their on‑time delivery rates compare to others?
+7. Which drivers and trucks have the highest incident rates, and what percentage of incidents were preventable?
+8. How do load volumes and revenue fluctuate by month or season across different freight types?
+9. What is the average fuel cost per route, and which lanes are most sensitive to fuel price changes?
+10. Which facilities experience the most inbound and outbound loads, and how does this relate to operating hours and dock capacity?
+11. Which routes generate the highest profit margin after fuel costs?
