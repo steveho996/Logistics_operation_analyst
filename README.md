@@ -1,74 +1,84 @@
-=======
-# Logistics_operation_analyst
+# Logistics Operation SQL Portfolio
 
-Most logistics datasets are either proprietary (unavailable) or overly simplified (unrealistic). This fills the gap: operational complexity without confidentiality concerns. The data reflects real industry patterns:
+This portfolio demonstrates end-to-end **logistics data analysis** using PostgreSQL and Power Query, following a clear **ETL flow** (Extract → Transform → Load).
 
-Fuel prices track the 2022 diesel spike and 2023-2024 decline
-Driver turnover sits at 15% annually (industry standard)
-Equipment utilization averages 65% (typical for dry van operations)
-On-time delivery performance ranges 85-95% (realistic service levels)
-Maintenance intervals follow Class 8 PM schedules
-Dataset Structure
-Core Entities (Reference Tables):
+---
 
-Drivers (150 records) - Demographics, employment history, CDL info
-Trucks (120 records) - Fleet specs, acquisition dates, status
-Trailers (180 records) - Equipment types, current assignments
-Customers (200 records) - Shipper accounts, contract terms, revenue potential
-Facilities (50 records) - Terminals and warehouses with geocoordinates
-Routes (60+ records) - City pairs with distances and rate structures
-Operational Transactions:
+## Project Structure
+- `schema.sql` → Database schema for logistics operations
+- `Data/` → Sample CSV datasets
+- `Analyst/` → SQL queries and output screenshots
+- `Analyst/screenshots/` → Visual outputs, data profiling, ETL flow diagrams
 
-Loads (57,000+ records) - Shipment details, revenue, booking type
-Trips (57,000+ records) - Driver-truck assignments, actual performance
-Fuel Purchases (131,000+ records) - Transaction-level data with pricing
-Maintenance Records (6,500+ records) - Service history, costs, downtime
-Delivery Events (114,000+ records) - Pickup/delivery timestamps, detention
-Safety Incidents (114 records) - Accidents, violations, claims
-Aggregated Analytics:
+---
 
-Driver Monthly Metrics (5,400+ records) - Performance summaries
-Truck Utilization Metrics (3,800+ records) - Equipment efficiency
-Key Features
-Temporal Coverage: January 2022 through December 2024 (3 years)
+## ETL Flow
 
-Geographic Scope: National operations across 25+ major US cities
+### 1. Extract
+- Source: CSV files exported from logistics operations database
+- Files loaded into **Power Query** to inspect data structure, types, and quality
 
-Realistic Patterns:
+### 2. Transform
+- Data cleaned and standardized using **Power Query**:
 
-Seasonal freight fluctuations (Q4 peaks)
-Historical fuel price accuracy
-Equipment lifecycle modeling
-Driver retention dynamics
-Service level variations
-Data Quality:
+### 3. Load
+- Cleaned CSV files loaded into **PostgreSQL**
+- Database schema defined in `schema.sql`
+- SQL queries executed on **clean data** for analysis
 
-Complete foreign key integrity
-No orphaned records
-Intentional 2% null rate in driver/truck assignments (reflects reality)
-All timestamps properly sequenced
-Financial calculations verified
+---
 
-Use Case Examples
-Business Intelligence:
-Create executive dashboards showing revenue per truck, cost per mile, driver efficiency rankings, maintenance spend by equipment age, customer concentration risk.
+## Business Questions & SQL Analysis
 
-Predictive Analytics:
-Build models forecasting equipment failures based on maintenance history, predict driver turnover using performance metrics, estimate route profitability for new lanes.
+1. **Top Revenue Customers** – identify highest revenue-generating customers
+2. **Driver On-Time Performance** – top drivers for punctual deliveries
+3. **Truck Maintenance Costs** – monitor truck maintenance and downtime
+4. **Fuel Consumption** – analyze fuel efficiency by truck
+5. **Route Revenue & Distance** – identify profitable routes
+6. **Incident Analysis** – monitor driver/truck safety incidents
+7. **Average Load Weight & Trip Analysis** – optimize logistics planning
 
-Operations Optimization:
-Analyze route efficiency, identify underutilized assets, optimize maintenance scheduling, calculate ideal fleet size, evaluate driver-to-truck ratios.
+> SQL queries with comments are in `Analyst/queries.sql`. Screenshots of outputs are in `Analyst/screenshots/`.
 
-Sample Questions to Explore
-1. Which drivers have the highest on‑time delivery rate, and how does this correlate with their average MPG?
-2. What is the revenue per mile for each route, and which lanes generate the highest profit after fuel costs?
-3. Which trucks generate the most revenue per month, and how many miles do they run compared to the fleet average?
-4. Which trucks have the highest maintenance cost per mile, and how does downtime affect their revenue contribution?
-5. How does fuel efficiency (MPG) vary by route type, distance, and driver?
-6. Which customers generate the most revenue, and how do their on‑time delivery rates compare to others?
-7. Which drivers and trucks have the highest incident rates, and what percentage of incidents were preventable?
-8. How do load volumes and revenue fluctuate by month or season across different freight types?
-9. What is the average fuel cost per route, and which lanes are most sensitive to fuel price changes?
-10. Which facilities experience the most inbound and outbound loads, and how does this relate to operating hours and dock capacity?
-11. Which routes generate the highest profit margin after fuel costs?
->>>>>>> dc676f818c42cd2004e5bd3ba58529697e82cb53
+---
+
+## SQL Techniques Used
+- `JOIN` (INNER, LEFT)
+- `GROUP BY` and Aggregations (`SUM`, `AVG`, `COUNT`)
+- Window Functions (`ROW_NUMBER`, `RANK`)
+- Common Table Expressions (CTE)
+- Date/Time functions and calculations
+- Conditional aggregations and filtering
+
+---
+
+## Key Found Insights
+1. Top Revenue Customers
+Revenue is heavily concentrated among a small group of high‑value contract customers, especially in Retail and Consumer Goods. Inactive accounts represent millions in lost potential revenue.
+
+2. Driver On‑Time Performance
+Experienced drivers and those based in major hubs consistently achieve the highest on‑time delivery rates. Strong on‑time performance often aligns with safer, more consistent driving habits.
+
+3. Truck Maintenance Costs
+Older trucks and high‑mileage units incur the most maintenance costs and downtime. Frequent repairs directly reduce asset utilization and monthly revenue.
+
+4. Fuel Consumption & Efficiency
+Newer trucks deliver better MPG, while routes with heavy traffic or elevation changes reduce fuel efficiency. Even small MPG improvements can significantly lower fleet-wide fuel costs.
+
+5. Route Revenue & Distance
+Short‑haul, high‑rate routes generate the strongest profit margins due to lower fuel consumption. Long‑haul routes bring higher total revenue but lower margin because of fuel and wear.
+
+6. Safety Incident Analysis
+Preventable incidents cluster around newer drivers and congested metro regions. Weather‑related incidents spike seasonally, increasing operational risk during winter months.
+
+7. Load & Trip Pattern Insights
+Trip patterns show opportunities to reduce empty miles and balance freight across terminals. Consistent regional lanes suggest potential for optimizing trailer assignment and route planning.
+
+---
+
+## Tech Stack
+- PostgreSQL (pgAdmin 4)
+- SQL
+- Power Query / Excel for data cleaning and profiling
+- GitHub for version control and portfolio presentation
+
