@@ -1,14 +1,14 @@
 # Logistics Operation SQL Portfolio
 
-This portfolio demonstrates end-to-end **logistics data analysis** using PostgreSQL and Power Query, following a clear **ETL flow** (Extract → Transform → Load).
+This portfolio demonstrates end-to-end **logistics data analysis** using PostgreSQL and Power Query, following a clear ETL flow and load all project to Github via Vs code. 
 
 ---
 
 ## Project Structure
 - `schema.sql` → Database schema for logistics operations
 - `Data/` → Sample CSV datasets
-- `Analyst/` → SQL queries and output screenshots
-- `Analyst/screenshots/` → Visual outputs, data profiling, ETL flow diagrams
+- `Analyst/` → SQL queries
+- `Analyst/screenshots/` → Data profiling
 
 ---
 
