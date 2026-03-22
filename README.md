@@ -38,7 +38,7 @@ This project demonstrates end-to-end **logistics data analysis** using PostgreSQ
 6. **Incident Analysis** – monitor driver/truck safety incidents
 7. **Average Load Weight & Trip Analysis** – optimize logistics planning
 
-> SQL queries with comments are in `Analyst/queries.sql`. Screenshots of outputs are in `Analyst/screenshots/`.
+> SQL queries with comments are in `Analyst`. Screenshots of outputs are in `Analyst`.
 
 ---
 
