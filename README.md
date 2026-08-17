@@ -5,6 +5,7 @@ This project demonstrates end-to-end **logistics data analysis** from data model
 --- 
 
 ## Project Structure
+- `Schema diagram.pdf` → Data modeling
 - `schema.sql` → Database schema for logistics operations
 - `Data/` → Sample CSV datasets
 - `Analyst/` → SQL queries
