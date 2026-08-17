@@ -1,6 +1,6 @@
 # Logistics Operation SQL Project
 
-This project demonstrates end-to-end **logistics data analysis** using PostgreSQL and Power Query, following a clear ETL flow and load all project to Github via Vs code. 
+This project demonstrates end-to-end **logistics data analysis** from data modeling to using PostgreSQL and Power Query, following a clear ETL flow and load all project to Github via Vs code. 
 
 --- 
 
