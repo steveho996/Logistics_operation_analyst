@@ -27,6 +27,65 @@ This project demonstrates end-to-end **logistics data analysis** using PostgreSQ
 - SQL queries executed on **clean data** for analysis
 
 ---
+## Data Modeling
+### 1. First, I identified entities, the relationships between them and categorized them into dimension and fact tables.
+FACT TABLES (Events/Transactions):
+  ├─ trips → drivers, trucks, trailers, loads
+  ├─ loads → customers, routes
+  ├─ delivery_events → loads, trips, facilities
+  ├─ safety_incidents → trips, trucks, drivers
+  ├─ fuel_purchases → trips, trucks, drivers
+  └─ maintenance_records → trucks
+
+DIMENSION TABLES (Reference/Master Data):
+  ├─ drivers
+  ├─ trucks
+  ├─ trailers
+  ├─ routes
+  ├─ customers
+  └─ facilities
+
+AGGREGATED TABLES (Pre-calculated Metrics):
+  ├─ driver_monthly_metrics (aggregate of trips + incidents)
+  └─ truck_utilization_metrics (aggregate of trips + maintenance)
+
+### 2. Normalization, Relationships & Constraints
+This model uses a star schema  
+Normalization (3NF) Example
+Normalization eliminates redundant data by storing each fact only once.
+Before (Redundant) — driver info repeated in every trip row:
+
+trips: trip_id | driver_id | driver_name | hire_date  | email
+T001  | D001    | John       | 2020-01-15 | john@email.com
+T002  | D001    | John       | 2020-01-15 | john@email.com  ← Duplicate
+
+After (Normalized) — driver info stored once, referenced by key:
+drivers: driver_id | driver_name | hire_date  | email
+D001     | John        | 2020-01-15 | john@email.com
+
+trips: trip_id | driver_id
+T001    | D001
+T002    | D001
+### 3. Data Quality Constraints
+
+Key constraints
+
+-- Primary Keys ensure unique identifiers
+driver_id, truck_id, load_id, trip_id, etc.
+
+-- Foreign Keys maintain referential integrity
+trips.driver_id → drivers.driver_id
+trips.truck_id → trucks.truck_id
+
+-- NOT NULL constraints on critical fields
+- customer_name (must know customer)
+- revenue (must have value for billing)
+- incident_date (must know when incident occurred)
+
+-- Domain constraints on valid values
+- trip_status IN ('Completed', 'In Progress', 'Delayed')
+- incident_type IN ('Moving Violation', 'Accident', 'Equipment Damage')
+```
 
 ## Business Questions & SQL Analysis
 
