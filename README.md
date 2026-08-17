@@ -137,6 +137,7 @@ Trip patterns show opportunities to reduce empty miles and balance freight acros
 ---
 
 ## Tech Stack
+- Dbdiagram
 - PostgreSQL (pgAdmin 4)
 - SQL
 - Power Query / Excel for data cleaning and profiling
